@@ -137,7 +137,7 @@ function Boat(size, lifeboats, passengers, crew, food) {
   this.passengers = passengers;
   this.crew = crew;
   this.sailing = 0;
-  
+
 }
 Boat.prototype.wrecked = function () {
 
@@ -161,14 +161,26 @@ Boat.prototype.wrecked = function () {
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
-
+function GameObject (createdAt, name, dimensions) {
+  this.createdAt = createdAt;
+  this.name = name;
+  this.dimensions = dimensions;
+}
+GameObject.prototype.destroy = function () {
+  return `${this.name} was removed from the game.`
+}
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+function CharacterStats (healthPoints, createdAt, name, dimensions) {
+  GameObject.call(this, createdAt, name, dimensions)
+  this.healthPoints = healthPoints;
+}
 
+Baby.prototype = Object.create(Person.prototype);
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
