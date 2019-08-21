@@ -39,3 +39,10 @@ console.log(object.name);
 // Principle 4
 
 // code example for Explicit Binding
+function me(name, age) {
+    console.log(this);
+    return name + ' age ' + age;
+}
+let person1 = me ('james', 40);
+let copyOfMe = me.bind('Explicitly bound, instead of the window above');
+let person2 = copyOfMe ('james', 40);
