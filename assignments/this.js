@@ -12,14 +12,29 @@
 // Principle 1
 
 // code example for Window Binding
+var globalObject = this;
+var upperVariable = 'Logged by window binding';
+console.log(window.upperVariable);
 
 // Principle 2
 
 // code example for Implicit Binding
+let bindingObject = {
+    useThis: 'I am implicitly bound',
+    example: function () {
+        return this.useThis;
+    }
+}
+console.log(bindingObject.example())
 
 // Principle 3
 
 // code example for New Binding
+function CreateObject(name) {
+    this.name = name;
+}
+let object = new CreateObject('assigned with a new binding');
+console.log(object.name);
 
 // Principle 4
 
