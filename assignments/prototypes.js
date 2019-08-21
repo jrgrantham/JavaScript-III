@@ -175,12 +175,14 @@ GameObject.prototype.destroy = function () {
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
-function CharacterStats (healthPoints, createdAt, name, dimensions) {
-  GameObject.call(this, createdAt, name, dimensions)
+function CharacterStats (createdAt, name, dimensions, healthPoints) {
+  GameObject.call(this, createdAt, name, dimensions);
   this.healthPoints = healthPoints;
 }
-
-Baby.prototype = Object.create(Person.prototype);
+CharacterStats.prototype = Object.create(GameObject.prototype);
+CharacterStats.prototype.takeDamage = function () {
+  return `${this.name} took damage.`;
+}
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
@@ -190,7 +192,16 @@ Baby.prototype = Object.create(Person.prototype);
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
-
+function Humanoid (createdAt, name, dimensions, healthPoints, team, weapons, language) {
+  CharacterStats.call(this, createdAt, name, dimensions, healthPoints);
+  this.team = team;
+  this.weapons = weapons;
+  this.language = language;
+}
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+Humanoid.prototype.greet = function () {
+  return `${this.name} offers a greeting in ${this.language}`;
+}
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -199,7 +210,7 @@ Baby.prototype = Object.create(Person.prototype);
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -257,4 +268,4 @@ Baby.prototype = Object.create(Person.prototype);
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
