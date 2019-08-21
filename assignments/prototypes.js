@@ -78,7 +78,7 @@ const James = new Person('James', 40);
 
 */
 
-function Car(model, make) {
+function Car(make, model) {
   this.make = make;
   this.model = model;
   this.odometer = 0;
@@ -111,7 +111,15 @@ const car = new Car('ford', 'fiesta');
 
 */
 
+function Baby(name, age) {
+  Person.call(this, name, age);
+}
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `I'm ${this.age} and playing with a knife`;
+}
 
+const newBaby = new Baby('Joe', 1);
 
 /*
 
@@ -122,6 +130,8 @@ const car = new Car('ford', 'fiesta');
   complicated one with lots of state. Surprise us!
 
 */
+
+
 
 /*
 
