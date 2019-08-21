@@ -33,9 +33,7 @@
   console.log(jumbo.isFlying)          // true
   jumbo.land();
   console.log(jumbo.isFlying)          // false
-*/
 
-/*
 
   TASK 1
 
@@ -45,6 +43,24 @@
   - When eating an edible, it should be pushed into a "stomach" property which is an array.
   - Give persons the ability to poop.
   - When pooping, the stomach should empty.
+
+*/
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+Person.prototype.greet = function () {
+  return `my name is ${this.name} and I am ${this.age}`;
+}
+
+
+
+const James = new Person('James', 40);
+
+
+/*
 
   TASK 2
 
