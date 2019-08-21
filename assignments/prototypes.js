@@ -54,8 +54,12 @@ function Person(name, age) {
 Person.prototype.greet = function () {
   return `my name is ${this.name} and I am ${this.age}`;
 }
-
-
+Person.prototype.eat = function (food) {
+  this.stomach.push(food);
+}
+Person.prototype.poop = function () {
+  this.stomach = [];
+}
 
 const James = new Person('James', 40);
 
@@ -72,12 +76,20 @@ const James = new Person('James', 40);
   - Give cars the ability to be repaired.
   - A repaired car can be driven again.
 
+*/
+
+/*
+
   TASK 3
 
   - Build a Baby constructor that subclasses the Person built earlier.
   - Babies of course inherit the ability to greet, which can be strange.
   - Babies should have the ability to play, which persons don't.
   - By playing, a string is returned with some text of your choosing.
+
+*/
+
+/*
 
   TASK 4
 
