@@ -78,6 +78,28 @@ const James = new Person('James', 40);
 
 */
 
+function Car(model, make) {
+  this.make = make;
+  this.model = model;
+  this.odometer = 0;
+  this.running = true;
+}
+Car.prototype.drive = function (distance) {
+  if (this.running === true) {
+    this.odometer = this.odometer + distance;
+  } else {
+    return `I've been crashed, I've only been driven ${this.odometer} miles`
+  }
+}
+Car.prototype.crash = function () {
+  this.running = false;
+}
+Car.prototype.repair = function () {
+  this.running = true;
+}
+
+const car = new Car('ford', 'fiesta');
+
 /*
 
   TASK 3
@@ -88,6 +110,8 @@ const James = new Person('James', 40);
   - By playing, a string is returned with some text of your choosing.
 
 */
+
+
 
 /*
 
