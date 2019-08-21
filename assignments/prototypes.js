@@ -131,7 +131,17 @@ const newBaby = new Baby('Joe', 1);
 
 */
 
+function Boat(size, lifeboats, passengers, crew, food) {
+  this.size = size;
+  this.lifeboats = lifeboats;
+  this.passengers = passengers;
+  this.crew = crew;
+  this.sailing = 0;
+  
+}
+Boat.prototype.wrecked = function () {
 
+}
 
 /*
 
