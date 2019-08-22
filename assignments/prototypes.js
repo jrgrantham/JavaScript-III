@@ -161,7 +161,7 @@ Boat.prototype.wrecked = function () {
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
-function GameObject (createdAt, name, dimensions) {
+function GameObject ({createdAt, name, dimensions}) {
   this.createdAt = createdAt;
   this.name = name;
   this.dimensions = dimensions;
@@ -175,8 +175,8 @@ GameObject.prototype.destroy = function () {
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
-function CharacterStats (createdAt, name, dimensions, healthPoints) {
-  GameObject.call(this, createdAt, name, dimensions);
+function CharacterStats ({createdAt, name, dimensions, healthPoints}) {
+  GameObject.call(this, {createdAt, name, dimensions});
   this.healthPoints = healthPoints;
 }
 CharacterStats.prototype = Object.create(GameObject.prototype);
@@ -192,8 +192,8 @@ CharacterStats.prototype.takeDamage = function () {
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
-function Humanoid (createdAt, name, dimensions, healthPoints, team, weapons, language) {
-  CharacterStats.call(this, createdAt, name, dimensions, healthPoints);
+function Humanoid ({createdAt, name, dimensions, healthPoints, team, weapons, language}) {
+  CharacterStats.call(this, {createdAt, name, dimensions, healthPoints});
   this.team = team;
   this.weapons = weapons;
   this.language = language;
